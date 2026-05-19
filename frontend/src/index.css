@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 20% 98%;
+    --foreground: 260 40% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 260 40% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 40% 12%;
+
+    --primary: 271 90% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 15% 92%;
+    --secondary-foreground: 260 30% 25%;
+
+    --muted: 260 12% 94%;
+    --muted-foreground: 260 12% 45%;
+
+    --accent: 260 20% 90%;
+    --accent-foreground: 271 90% 55%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 260 15% 88%;
+    --input: 260 15% 88%;
+    --ring: 271 90% 55%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 264 65% 5%;
+    --foreground: 250 20% 95%;
+
+    --card: 264 55% 8%;
+    --card-foreground: 250 20% 95%;
+
+    --popover: 264 55% 8%;
+    --popover-foreground: 250 20% 95%;
+
+    --primary: 270 95% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 264 30% 13%;
+    --secondary-foreground: 250 20% 90%;
+
+    --muted: 264 25% 12%;
+    --muted-foreground: 260 15% 70%;
+
+    --accent: 264 35% 16%;
+    --accent-foreground: 250 20% 95%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 264 30% 15%;
+    --input: 264 30% 15%;
+    --ring: 270 95% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Premium Custom Utilities */
+.glass-panel {
+  background: rgba(14, 8, 25, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 45, 240, 0.1);
+}
+
+.text-gradient-orchid {
+  background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #8b2df0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.45);
+}
+
+/* @media print layouts for borderless PDF saves */
+@media print {
+  /* Hide interactive sidebars, buttons, banners, filters, forms, and modals */
+  nav,
+  aside,
+  header,
+  .sidebar,
+  .navbar,
+  .no-print,
+  button,
+  form,
+  select,
+  input,
+  .glass-panel border,
+  .absolute,
+  .toast-container,
+  [role="dialog"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Reset main layouts */
+  body, 
+  html,
+  #root,
+  main,
+  .space-y-8 {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  /* Format tables and totals for high contrast prints */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+
+  th {
+    border-bottom: 2px solid #333333 !important;
+    color: #1a1a1a !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 11px !important;
+    padding: 10px 5px !important;
+    text-align: left !important;
+  }
+
+  td {
+    border-bottom: 1px solid #e5e7eb !important;
+    color: #374151 !important;
+    font-size: 11px !important;
+    padding: 8px 5px !important;
+  }
+
+  /* Format visual print headers */
+  .text-gradient-orchid {
+    background: none !important;
+    -webkit-text-fill-color: #1a1a1a !important;
+    color: #1a1a1a !important;
+    font-size: 24px !important;
+    font-weight: 800 !important;
+  }
+}
